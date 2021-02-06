@@ -2,48 +2,96 @@ from colorama import Fore
 from time import sleep
 
 
-def change_color_in_range(list, min, max, color):
-    for i in range(min, max):
-        list[i].color = Fore.RED
-
-
-def swap(list, index1, index2):
-    """ Swaps two elements in a list """
-
-    list[index1], list[index2] = list[index2], list[index1]
-
-
-def print_underlined(str):
-    """
-    Prints an underlined version of a string. For example:
-
-    This is a test string
-    ---------------------
+def change_color_in_range(data, start, stop, color):
+    """Changes the colors of all the numbers within the given range of the list.
+    
+    Parameters
+    ----------
+    data: list[ColoredInt]
+        The list containing the numbers
+    start: int
+        Index of the first item (inclusive)
+    stop: int
+        Index of the last item (exclusive)
     """
 
-    print(str)
-    print('-' * len(str))
+    for i in range(start, stop):
+        data[i].color = color
 
 
-def change_to_swapped_colors(list, index1, index2):
-    """ Changes the colors of the two integers being swapped """
+def swap(data, index1, index2):
+    """Swaps two elements in a list.
 
-    list[index1].color = Fore.YELLOW
-    list[index2].color = Fore.BLUE
-
-
-def swap_operation(list, index1, index2, delay):
+    Parameters
+    ----------
+    data: list[Object]
+        The list containing the items
+    index1: int
+        Index of the first item
+    index2: int
+        Index of the second item
     """
-    Swaps two numbers in the list with visualization.
+
+    data[index1], data[index2] = data[index2], data[index1]
+
+
+def print_underlined(string):
+    """Prints an underlined version of a string.
+
+    For example:
+        This is a test string
+        ---------------------
+
+    Parameter
+    ---------
+    string: str
+        The string to print
+    """
+
+    print(string)
+    print('-' * len(string))
+
+
+def change_to_swapped_colors(data, index1, index2):
+    """Changes the colors of the two integers being swapped.
+    
+    Parameters
+    ----------
+    data: list[ColoredInts]
+        The list containing the numbers
+    index1: int
+        The index of the first item, changes the color to YELLOW
+    index2: int
+        The index of the second item, changes the color to BLUE
+    """
+
+    data[index1].color = Fore.YELLOW
+    data[index2].color = Fore.BLUE
+
+
+def visual_swap(data, index1, index2, delay):
+    """Swaps two numbers in the list with visualization.
+
     1) Change the numbers' color to different colors
     2) Show the numbers in their original positions
     3) Swap the numbers
     4) Show the numbers in their new positions
+
+    Parameters
+    ----------
+    data: list[ColoredInt]
+        The list containing numbers to swap
+    index1: int
+        The index of the first item
+    index2: int
+        The index of the second item
+    delay: float
+        The time to sleep in between steps of the visualization
     """
 
-    change_to_swapped_colors(list, index1, index2)
-    print(list, end='\r')
+    change_to_swapped_colors(data, index1, index2)
+    print(data, end='\r')
     sleep(delay)
-    swap(list, index1, index2)
-    print(list, end='\r')
+    swap(data, index1, index2)
+    print(data, end='\r')
     sleep(delay)

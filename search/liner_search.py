@@ -1,3 +1,11 @@
+"""Linear Search Visualizer
+
+This script creates a random list of integers and uses a linear search 
+to find a value that may or may not be in the list.
+Each step of the algorithm is shown by coloring the numbers in the 
+list and displaying it to the console.
+"""
+
 from random import randint
 from time import sleep
 

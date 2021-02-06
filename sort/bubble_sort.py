@@ -1,3 +1,9 @@
+"""Bubble Sort Visualizer
+
+This script creates a random list of integers and sorts it using bubble sort.
+Each step of the algorithm is shown by coloring the numbers in the list and displaying it to the console.
+"""
+
 from random import randint
 from time import sleep
 
@@ -5,7 +11,7 @@ from colorama import Fore
 from colorama import init as color_init
 
 from sscommon.colored_int import ColoredInt
-from sscommon.util import print_underlined, swap_operation
+from sscommon.util import print_underlined, visual_swap
 
 # Options
 SORT_ORDER = "asc"          # "asc" for ascending, or "desc" for descending
@@ -46,10 +52,10 @@ for i in range(len(numbers)):
         # Swap values based on sorting order. Defaults to ascending
         if SORT_ORDER == "desc":
             if numbers[j] < numbers[j + 1]:
-                swap_operation(numbers, j, j + 1, SWAP_DELAY)
+                visual_swap(numbers, j, j + 1, SWAP_DELAY)
         else:
             if numbers[j] > numbers[j + 1]:
-                swap_operation(numbers, j, j + 1, SWAP_DELAY)
+                visual_swap(numbers, j, j + 1, SWAP_DELAY)
 
         # Reset the colors
         numbers[j].color = Fore.RESET

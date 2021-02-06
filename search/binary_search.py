@@ -1,3 +1,11 @@
+"""Binary Search Visualizer
+
+This script creates a random list of integers, sorts the list, and uses binary search
+to find a value that may or may not be in it.
+Each step of the algorithm is shown by coloring the numbers in the list and 
+displaying it to the console.
+"""
+
 from random import randint
 from time import sleep
 

@@ -2,6 +2,17 @@ from colorama import Fore
 
 
 class ColoredInt:
+    """
+    A wrapper class that can print an integer to the console with color.
+
+    Attributes
+    ----------
+    value: int
+        The integer value
+    color: colorama.Fore
+        The color of the integer text. Use a constant from colorama.Fore.COLOR
+    """
+
     def __init__(self, value, color=Fore.RESET):
         self.value = value
         self.color = color
