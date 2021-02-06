@@ -12,6 +12,12 @@ class ColoredInt:
     def __repr__(self):
         return self.color + str(self.value) + Fore.RESET
 
+    def __eq__(self, o):
+        if isinstance(o, ColoredInt):
+            return self.value == o.value
+        elif isinstance(o, int):
+            return self.value == o
+
     def __gt__(self, other):
         if isinstance(other, ColoredInt):
             return self.value > other.value

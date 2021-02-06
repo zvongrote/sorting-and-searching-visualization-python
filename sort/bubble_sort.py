@@ -4,8 +4,8 @@ from time import sleep
 from colorama import Fore
 from colorama import init as color_init
 
-from colored_int import ColoredInt
-from util import print_underlined, swap_operation
+from sscommon.colored_int import ColoredInt
+from sscommon.util import print_underlined, swap_operation
 
 # Options
 SORT_ORDER = "asc"          # "asc" for ascending, or "desc" for descending

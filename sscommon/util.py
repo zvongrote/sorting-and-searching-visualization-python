@@ -2,6 +2,11 @@ from colorama import Fore
 from time import sleep
 
 
+def change_color_in_range(list, min, max, color):
+    for i in range(min, max):
+        list[i].color = Fore.RED
+
+
 def swap(list, index1, index2):
     """ Swaps two elements in a list """
 

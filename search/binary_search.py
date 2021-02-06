@@ -4,8 +4,8 @@ from time import sleep
 from colorama import Fore
 from colorama import init as colorama_init
 
-from colored_int import ColoredInt
-from util import change_color_in_range
+from sscommon.colored_int import ColoredInt
+from sscommon.util import change_color_in_range
 
 # Options
 LIST_SIZE = 20
