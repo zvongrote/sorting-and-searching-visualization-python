@@ -13,7 +13,7 @@ from colorama import Fore
 from colorama import init as colorama_init
 
 from sscommon.colored_int import ColoredInt
-from sscommon.util import change_color_in_range
+from sscommon.util import change_color_in_range, list_of_random_colored_ints, print_list_with_delay, random_number_to_search
 
 # Options
 LIST_SIZE = 20
@@ -26,30 +26,16 @@ PRINT_DELAY = 1 / SPEED
 colorama_init(autoreset=True)
 
 # Create a random list of integers, then sort it in ascending order
-numbers = list()
-for _ in range(LIST_SIZE):
-    random_int = randint(MIN_VALUE, MAX_VALUE)
-    colored_number = ColoredInt(random_int)
-    numbers.append(colored_number)
+numbers = list_of_random_colored_ints(LIST_SIZE, MIN_VALUE, MAX_VALUE)
 numbers.sort()
 
 # Pick a number to search for
-number_to_search = None
-pick_number_in_list = randint(1, 2) == 1
-if pick_number_in_list:
-    index = randint(0, LIST_SIZE - 1)
-    number_to_search = numbers[index].value
-else:
-    x = randint(MIN_VALUE, MAX_VALUE)
-    while x in numbers:
-        x = randint(MIN_VALUE, MIN_VALUE)
-    number_to_search = x
+number_to_search = random_number_to_search(numbers, MIN_VALUE, MAX_VALUE)
 
 # Perfrom the binary search
 print()
 print(f"Searching for {number_to_search}:")
-print(numbers, end='\r')
-sleep(PRINT_DELAY)
+print_list_with_delay(numbers, PRINT_DELAY)
 low = 0
 high = len(numbers) - 1
 # These "previous" values are used for coloring, they don't affect the algorithm
@@ -60,14 +46,12 @@ while low <= high:
     numbers[low].color = Fore.BLUE
     numbers[high].color = Fore.BLUE
 
-    print(numbers, end='\r')
-    sleep(PRINT_DELAY)
+    print_list_with_delay(numbers, PRINT_DELAY)
 
     # Calculate the midpoint and change it to yellow
     mid = (low + high) // 2
     numbers[mid].color = Fore.YELLOW
-    print(numbers, end='\r')
-    sleep(PRINT_DELAY)
+    print_list_with_delay(numbers, PRINT_DELAY)
 
     # Search for the desired number.
     # If it's found, change it to green.
@@ -88,7 +72,6 @@ while low <= high:
         previous_high = high
 
     end = '\n' if low > high else '\r'
-    print(numbers, end=end)
-    sleep(PRINT_DELAY)
+    print_list_with_delay(numbers, PRINT_DELAY, end)
 
 print()

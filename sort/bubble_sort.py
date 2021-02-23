@@ -11,7 +11,7 @@ from colorama import Fore
 from colorama import init as color_init
 
 from sscommon.colored_int import ColoredInt
-from sscommon.util import print_underlined, visual_swap
+from sscommon.util import list_of_random_colored_ints, print_list_with_delay, print_underlined, visual_swap
 
 # Options
 SORT_ORDER = "asc"          # "asc" for ascending, or "desc" for descending
@@ -26,11 +26,7 @@ MAX_VALUE = 100
 color_init(autoreset=True)
 
 # Create a list of random colored integers
-numbers = list()
-for _ in range(LIST_SIZE):
-    random_int = randint(MIN_VALUE, MAX_VALUE)
-    colored_number = ColoredInt(random_int)
-    numbers.append(colored_number)
+numbers = list_of_random_colored_ints(LIST_SIZE, MIN_VALUE, MAX_VALUE)
 
 # Show the unsorted array
 print()
@@ -46,8 +42,7 @@ for i in range(len(numbers)):
         numbers[j + 1].color = Fore.RED
 
         # Print and pause for a certain time based on the SPEED value
-        print(numbers, end='\r')
-        sleep(PRINT_DELAY)
+        print_list_with_delay(numbers, PRINT_DELAY)
 
         # Swap values based on sorting order. Defaults to ascending
         if SORT_ORDER == "desc":
